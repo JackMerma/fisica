@@ -14,11 +14,6 @@ def calculateMruv(data):
         printResult("El tiempo no puede ser negativo")
         return
 
-    # factor de aceleracion
-    fact = 1
-    if(existance[2] and dataList[2] < 0):
-        fact = -1
-
     if(existance[0] == -1):
         # existencia de datos
         if(not existance[1] or not existance[2] or not existance[3]):
@@ -26,7 +21,7 @@ def calculateMruv(data):
             return
 
         # procesamiento
-        result = dataList[1] + dataList[2] * dataList[3] * fact
+        result = dataList[1] + dataList[2] * dataList[3]
         result = str(result)
         printResult("La velocidad final es " + result + " m/s")
     elif(existance[1] == -1):
@@ -42,7 +37,7 @@ def calculateMruv(data):
                 return
 
         if(existance1): # formula 1
-            result = dataList[0] - dataList[2] * dataList[3] * fact
+            result = dataList[0] - dataList[2] * dataList[3]
             result = str(result)
             printResult("La velocidad inicial es " + result + " m/s")
         else: # formula 2
@@ -50,7 +45,7 @@ def calculateMruv(data):
             if(dataList[3] == 0):
                 printResult("El tiempo no puede ser 0")
             else:
-                result = (dataList[4] - 0.5 * dataList[2] * (dataList[3] ** 2) * fact) / dataList[3]
+                result = (dataList[4] - 0.5 * dataList[2] * (dataList[3] ** 2)) / dataList[3]
                 result = str(result)
                 printResult("La velocidad inicial es " + result + " m/s")
 
@@ -70,14 +65,14 @@ def calculateMruv(data):
             if(dataList[3] == 0):
                 printResult("El tiempo no puede ser 0")
             else:
-                result = (dataList[0] - dataList[1]) / (dataList[3] * fact)
+                result = (dataList[0] - dataList[1]) / dataList[3]
                 result = str(result)
                 printResult("La aceleracion es " + result + " m/s^2")
         else: # formula 2
             if(dataList[3] == 0):
                 printResult("El tiempo no puede ser 0")
             else:
-                result = (dataList[4] - dataList[1] * dataList[3]) / (fact * 0.5 * dataList[3] ** 2)
+                result = (dataList[4] - dataList[1] * dataList[3]) / (0.5 * dataList[3] ** 2)
                 result = str(result)
                 printResult("La aceleracion es " + result + " m/s^2")
     elif(existance[3] == -1):
@@ -90,7 +85,7 @@ def calculateMruv(data):
         if(dataList[2] == 0):
             printResult("La aceleracion no puede ser 0")
         else:
-            result = (dataList[0] - dataList[1]) / (dataList[2] * fact)
+            result = (dataList[0] - dataList[1]) / dataList[2]
             result = str(result)
             printResult("El tiempo es " + result + " s")
     elif(existance[4] == -1):
@@ -100,7 +95,7 @@ def calculateMruv(data):
             return
 
         # procesamiento
-        result = dataList[1] * dataList[3] + fact * 0.5 * dataList[2] * dataList[3] ** 2
+        result = dataList[1] * dataList[3] + 0.5 * dataList[2] * dataList[3] ** 2
         result = str(result)
         printResult("La distancia es " + result + " m")
     else:
